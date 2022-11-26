@@ -1,0 +1,570 @@
+//                          Full stack development day4 task (JS)
+
+// 1. compare two JSON have the same properties without order
+
+// source code :
+
+var obj1={
+    name:"person1",
+    age:5
+}
+
+var obj2={
+    age:5,
+    name:"person1"
+}
+
+var result=JSON.stringify(obj1,obj2);
+console.log(result);
+
+// output :
+    
+    {"name":"person1","age":5}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// 2. print all countries flags:
+
+// source code :
+
+var request = new XMLHttpRequest();
+request.open("GET","https://restcountries.com/v3.1/all");
+request.send();
+request.onload=function()
+{
+    var data =request.response
+    var result =JSON.parse(data);
+    // console.log("Name :"+ result[31].name.common +", region :"+result[31].region+" ,subregion :"+result[31].subregion);
+
+    for(var i=0; i<result.length; i++)
+    {
+        console.log("country name : "+result[i].name.common+", country flags : ", result[i].flags);
+        
+    }
+}
+
+// output :
+
+  country name : Mauritania, country flags :  {png: 'https://flagcdn.com/w320/mr.png', svg: 'https://flagcdn.com/mr.svg'}
+  country name : Aruba, country flags :  {png: 'https://flagcdn.com/w320/aw.png', svg: 'https://flagcdn.com/aw.svg'}
+  country name : Argentina, country flags :  {png: 'https://flagcdn.com/w320/ar.png', svg: 'https://flagcdn.com/ar.svg'}
+  country name : Sweden, country flags :  {png: 'https://flagcdn.com/w320/se.png', svg: 'https://flagcdn.com/se.svg'}
+  country name : Maldives, country flags :  {png: 'https://flagcdn.com/w320/mv.png', svg: 'https://flagcdn.com/mv.svg'}
+  country name : Mexico, country flags :  {png: 'https://flagcdn.com/w320/mx.png', svg: 'https://flagcdn.com/mx.svg'}
+  country name : New Zealand, country flags :  {png: 'https://flagcdn.com/w320/nz.png', svg: 'https://flagcdn.com/nz.svg'}
+  country name : Ecuador, country flags :  {png: 'https://flagcdn.com/w320/ec.png', svg: 'https://flagcdn.com/ec.svg'}
+  country name : Wallis and Futuna, country flags :  {png: 'https://flagcdn.com/w320/wf.png', svg: 'https://flagcdn.com/wf.svg'}
+  country name : Åland Islands, country flags :  {png: 'https://flagcdn.com/w320/ax.png', svg: 'https://flagcdn.com/ax.svg'}
+  country name : Montenegro, country flags :  {png: 'https://flagcdn.com/w320/me.png', svg: 'https://flagcdn.com/me.svg'}
+  country name : Pakistan, country flags :  {png: 'https://flagcdn.com/w320/pk.png', svg: 'https://flagcdn.com/pk.svg'}
+  country name : Pitcairn Islands, country flags :  {png: 'https://flagcdn.com/w320/pn.png', svg: 'https://flagcdn.com/pn.svg'}
+  country name : Zambia, country flags :  {png: 'https://flagcdn.com/w320/zm.png', svg: 'https://flagcdn.com/zm.svg'}
+  country name : Seychelles, country flags :  {png: 'https://flagcdn.com/w320/sc.png', svg: 'https://flagcdn.com/sc.svg'}
+  country name : Malaysia, country flags :  {png: 'https://flagcdn.com/w320/my.png', svg: 'https://flagcdn.com/my.svg'}
+  country name : Norway, country flags :  {png: 'https://flagcdn.com/w320/no.png', svg: 'https://flagcdn.com/no.svg'}
+  country name : Uzbekistan, country flags :  {png: 'https://flagcdn.com/w320/uz.png', svg: 'https://flagcdn.com/uz.svg'}
+  country name : Vanuatu, country flags :  {png: 'https://flagcdn.com/w320/vu.png', svg: 'https://flagcdn.com/vu.svg'}
+  country name : French Southern and Antarctic Lands, country flags :  {png: 'https://flagcdn.com/w320/tf.png', svg: 'https://flagcdn.com/tf.svg'}
+  country name : Christmas Island, country flags :  {png: 'https://flagcdn.com/w320/cx.png', svg: 'https://flagcdn.com/cx.svg'}
+  country name : Singapore, country flags :  {png: 'https://flagcdn.com/w320/sg.png', svg: 'https://flagcdn.com/sg.svg'}
+  country name : Suriname, country flags :  {png: 'https://flagcdn.com/w320/sr.png', svg: 'https://flagcdn.com/sr.svg'}
+  country name : Western Sahara, country flags :  {png: 'https://flagcdn.com/w320/eh.png', svg: 'https://flagcdn.com/eh.svg'}
+  country name : Saint Martin, country flags :  {png: 'https://flagcdn.com/w320/mf.png', svg: 'https://flagcdn.com/mf.svg'}
+  country name : Costa Rica, country flags :  {png: 'https://flagcdn.com/w320/cr.png', svg: 'https://flagcdn.com/cr.svg'}
+  country name : Heard Island and McDonald Islands, country flags :  {png: 'https://flagcdn.com/w320/hm.png', svg: 'https://flagcdn.com/hm.svg'}
+  country name : Ireland, country flags :  {png: 'https://flagcdn.com/w320/ie.png', svg: 'https://flagcdn.com/ie.svg'}
+  country name : Antarctica, country flags :  {png: 'https://flagcdn.com/w320/aq.png', svg: 'https://flagcdn.com/aq.svg'}
+  country name : Australia, country flags :  {png: 'https://flagcdn.com/w320/au.png', svg: 'https://flagcdn.com/au.svg'}
+  country name : Libya, country flags :  {png: 'https://flagcdn.com/w320/ly.png', svg: 'https://flagcdn.com/ly.svg'}
+  country name : Qatar, country flags :  {png: 'https://flagcdn.com/w320/qa.png', svg: 'https://flagcdn.com/qa.svg'}
+  country name : Greenland, country flags :  {png: 'https://flagcdn.com/w320/gl.png', svg: 'https://flagcdn.com/gl.svg'}
+  country name : Mauritius, country flags :  {png: 'https://flagcdn.com/w320/mu.png', svg: 'https://flagcdn.com/mu.svg'}
+  country name : Kazakhstan, country flags :  {png: 'https://flagcdn.com/w320/kz.png', svg: 'https://flagcdn.com/kz.svg'}
+  country name : British Indian Ocean Territory, country flags :  {png: 'https://flagcdn.com/w320/io.png', svg: 'https://flagcdn.com/io.svg'}
+  country name : Albania, country flags :  {png: 'https://flagcdn.com/w320/al.png', svg: 'https://flagcdn.com/al.svg'}
+  country name : Bahrain, country flags :  {png: 'https://flagcdn.com/w320/bh.png', svg: 'https://flagcdn.com/bh.svg'}
+  country name : Papua New Guinea, country flags :  {png: 'https://flagcdn.com/w320/pg.png', svg: 'https://flagcdn.com/pg.svg'}
+  country name : Burundi, country flags :  {png: 'https://flagcdn.com/w320/bi.png', svg: 'https://flagcdn.com/bi.svg'}
+  country name : India, country flags :  {png: 'https://flagcdn.com/w320/in.png', svg: 'https://flagcdn.com/in.svg'}
+  country name : Uruguay, country flags :  {png: 'https://flagcdn.com/w320/uy.png', svg: 'https://flagcdn.com/uy.svg'}
+  country name : Saint Lucia, country flags :  {png: 'https://flagcdn.com/w320/lc.png', svg: 'https://flagcdn.com/lc.svg'}
+  country name : Barbados, country flags :  {png: 'https://flagcdn.com/w320/bb.png', svg: 'https://flagcdn.com/bb.svg'}
+  country name : New Caledonia, country flags :  {png: 'https://flagcdn.com/w320/nc.png', svg: 'https://flagcdn.com/nc.svg'}
+  country name : Latvia, country flags :  {png: 'https://flagcdn.com/w320/lv.png', svg: 'https://flagcdn.com/lv.svg'}
+  country name : Estonia, country flags :  {png: 'https://flagcdn.com/w320/ee.png', svg: 'https://flagcdn.com/ee.svg'}
+  country name : Niue, country flags :  {png: 'https://flagcdn.com/w320/nu.png', svg: 'https://flagcdn.com/nu.svg'}
+  country name : Saint Barthélemy, country flags :  {png: 'https://flagcdn.com/w320/bl.png', svg: 'https://flagcdn.com/bl.svg'}
+  country name : Puerto Rico, country flags :  {png: 'https://flagcdn.com/w320/pr.png', svg: 'https://flagcdn.com/pr.svg'}
+  country name : Grenada, country flags :  {png: 'https://flagcdn.com/w320/gd.png', svg: 'https://flagcdn.com/gd.svg'}
+  country name : Macau, country flags :  {png: 'https://flagcdn.com/w320/mo.png', svg: 'https://flagcdn.com/mo.svg'}
+  country name : Cyprus, country flags :  {png: 'https://flagcdn.com/w320/cy.png', svg: 'https://flagcdn.com/cy.svg'}
+  country name : Isle of Man, country flags :  {png: 'https://flagcdn.com/w320/im.png', svg: 'https://flagcdn.com/im.svg'}
+  country name : Greece, country flags :  {png: 'https://flagcdn.com/w320/gr.png', svg: 'https://flagcdn.com/gr.svg'}
+  country name : Syria, country flags :  {png: 'https://flagcdn.com/w320/sy.png', svg: 'https://flagcdn.com/sy.svg'}
+  country name : Lithuania, country flags :  {png: 'https://flagcdn.com/w320/lt.png', svg: 'https://flagcdn.com/lt.svg'}
+  country name : Curaçao, country flags :  {png: 'https://flagcdn.com/w320/cw.png', svg: 'https://flagcdn.com/cw.svg'}
+  country name : Dominica, country flags :  {png: 'https://flagcdn.com/w320/dm.png', svg: 'https://flagcdn.com/dm.svg'}
+  country name : Niger, country flags :  {png: 'https://flagcdn.com/w320/ne.png', svg: 'https://flagcdn.com/ne.svg'}
+  country name : Kyrgyzstan, country flags :  {png: 'https://flagcdn.com/w320/kg.png', svg: 'https://flagcdn.com/kg.svg'}
+  country name : Trinidad and Tobago, country flags :  {png: 'https://flagcdn.com/w320/tt.png', svg: 'https://flagcdn.com/tt.svg'}
+  country name : Togo, country flags :  {png: 'https://flagcdn.com/w320/tg.png', svg: 'https://flagcdn.com/tg.svg'}
+  country name : Palestine, country flags :  {png: 'https://flagcdn.com/w320/ps.png', svg: 'https://flagcdn.com/ps.svg'}
+  country name : Madagascar, country flags :  {png: 'https://flagcdn.com/w320/mg.png', svg: 'https://flagcdn.com/mg.svg'}
+  country name : Croatia, country flags :  {png: 'https://flagcdn.com/w320/hr.png', svg: 'https://flagcdn.com/hr.svg'}
+  country name : Faroe Islands, country flags :  {png: 'https://flagcdn.com/w320/fo.png', svg: 'https://flagcdn.com/fo.svg'}
+  country name : Haiti, country flags :  {png: 'https://flagcdn.com/w320/ht.png', svg: 'https://flagcdn.com/ht.svg'}
+  country name : Montserrat, country flags :  {png: 'https://flagcdn.com/w320/ms.png', svg: 'https://flagcdn.com/ms.svg'}
+  country name : Cook Islands, country flags :  {png: 'https://flagcdn.com/w320/ck.png', svg: 'https://flagcdn.com/ck.svg'}
+  country name : Timor-Leste, country flags :  {png: 'https://flagcdn.com/w320/tl.png', svg: 'https://flagcdn.com/tl.svg'}
+  country name : Martinique, country flags :  {png: 'https://flagcdn.com/w320/mq.png', svg: 'https://flagcdn.com/mq.svg'}
+  country name : Cuba, country flags :  {png: 'https://flagcdn.com/w320/cu.png', svg: 'https://flagcdn.com/cu.svg'}
+  country name : Taiwan, country flags :  {png: 'https://flagcdn.com/w320/tw.png', svg: 'https://flagcdn.com/tw.svg'}
+  country name : Eswatini, country flags :  {png: 'https://flagcdn.com/w320/sz.png', svg: 'https://flagcdn.com/sz.svg'}
+  country name : Ukraine, country flags :  {png: 'https://flagcdn.com/w320/ua.png', svg: 'https://flagcdn.com/ua.svg'}
+  country name : Bermuda, country flags :  {png: 'https://flagcdn.com/w320/bm.png', svg: 'https://flagcdn.com/bm.svg'}
+  country name : South Korea, country flags :  {png: 'https://flagcdn.com/w320/kr.png', svg: 'https://flagcdn.com/kr.svg'}
+  country name : Peru, country flags :  {png: 'https://flagcdn.com/w320/pe.png', svg: 'https://flagcdn.com/pe.svg'}
+  country name : Iraq, country flags :  {png: 'https://flagcdn.com/w320/iq.png', svg: 'https://flagcdn.com/iq.svg'}
+  country name : Moldova, country flags :  {png: 'https://flagcdn.com/w320/md.png', svg: 'https://flagcdn.com/md.svg'}
+  country name : San Marino, country flags :  {png: 'https://flagcdn.com/w320/sm.png', svg: 'https://flagcdn.com/sm.svg'}
+  country name : Venezuela, country flags :  {png: 'https://flagcdn.com/w320/ve.png', svg: 'https://flagcdn.com/ve.svg'}
+  country name : Guyana, country flags :  {png: 'https://flagcdn.com/w320/gy.png', svg: 'https://flagcdn.com/gy.svg'}
+  country name : Cayman Islands, country flags :  {png: 'https://flagcdn.com/w320/ky.png', svg: 'https://flagcdn.com/ky.svg'}
+  country name : Cambodia, country flags :  {png: 'https://flagcdn.com/w320/kh.png', svg: 'https://flagcdn.com/kh.svg'}
+  country name : Cocos (Keeling) Islands, country flags :  {png: 'https://flagcdn.com/w320/cc.png', svg: 'https://flagcdn.com/cc.svg'}
+  country name : Malta, country flags :  {png: 'https://flagcdn.com/w320/mt.png', svg: 'https://flagcdn.com/mt.svg'}
+  country name : Sri Lanka, country flags :  {png: 'https://flagcdn.com/w320/lk.png', svg: 'https://flagcdn.com/lk.svg'}
+  country name : Israel, country flags :  {png: 'https://flagcdn.com/w320/il.png', svg: 'https://flagcdn.com/il.svg'}
+  country name : Sudan, country flags :  {png: 'https://flagcdn.com/w320/sd.png', svg: 'https://flagcdn.com/sd.svg'}
+  country name : United States Virgin Islands, country flags :  {png: 'https://flagcdn.com/w320/vi.png', svg: 'https://flagcdn.com/vi.svg'}
+  country name : Eritrea, country flags :  {png: 'https://flagcdn.com/w320/er.png', svg: 'https://flagcdn.com/er.svg'}
+  country name : Mali, country flags :  {png: 'https://flagcdn.com/w320/ml.png', svg: 'https://flagcdn.com/ml.svg'}
+  country name : Somalia, country flags :  {png: 'https://flagcdn.com/w320/so.png', svg: 'https://flagcdn.com/so.svg'}
+  country name : Norfolk Island, country flags :  {png: 'https://flagcdn.com/w320/nf.png', svg: 'https://flagcdn.com/nf.svg'}
+  country name : Comoros, country flags :  {png: 'https://flagcdn.com/w320/km.png', svg: 'https://flagcdn.com/km.svg'}
+  country name : Nicaragua, country flags :  {png: 'https://flagcdn.com/w320/ni.png', svg: 'https://flagcdn.com/ni.svg'}
+  country name : Russia, country flags :  {png: 'https://flagcdn.com/w320/ru.png', svg: 'https://flagcdn.com/ru.svg'}
+  country name : Uganda, country flags :  {png: 'https://flagcdn.com/w320/ug.png', svg: 'https://flagcdn.com/ug.svg'}
+  country name : Nauru, country flags :  {png: 'https://flagcdn.com/w320/nr.png', svg: 'https://flagcdn.com/nr.svg'}
+  country name : Switzerland, country flags :  {png: 'https://flagcdn.com/w320/ch.png', svg: 'https://flagcdn.com/ch.svg'}
+  country name : Portugal, country flags :  {png: 'https://flagcdn.com/w320/pt.png', svg: 'https://flagcdn.com/pt.svg'}
+  country name : Tajikistan, country flags :  {png: 'https://flagcdn.com/w320/tj.png', svg: 'https://flagcdn.com/tj.svg'}
+  country name : South Sudan, country flags :  {png: 'https://flagcdn.com/w320/ss.png', svg: 'https://flagcdn.com/ss.svg'}
+  country name : Bouvet Island, country flags :  {png: 'https://flagcdn.com/w320/bv.png', svg: 'https://flagcdn.com/bv.svg'}
+  country name : Micronesia, country flags :  {png: 'https://flagcdn.com/w320/fm.png', svg: 'https://flagcdn.com/fm.svg'}
+  country name : American Samoa, country flags :  {png: 'https://flagcdn.com/w320/as.png', svg: 'https://flagcdn.com/as.svg'}
+  country name : Czechia, country flags :  {png: 'https://flagcdn.com/w320/cz.png', svg: 'https://flagcdn.com/cz.svg'}
+  country name : Botswana, country flags :  {png: 'https://flagcdn.com/w320/bw.png', svg: 'https://flagcdn.com/bw.svg'}
+  country name : Tunisia, country flags :  {png: 'https://flagcdn.com/w320/tn.png', svg: 'https://flagcdn.com/tn.svg'}
+  country name : Anguilla, country flags :  {png: 'https://flagcdn.com/w320/ai.png', svg: 'https://flagcdn.com/ai.svg'}
+  country name : Guinea-Bissau, country flags :  {png: 'https://flagcdn.com/w320/gw.png', svg: 'https://flagcdn.com/gw.svg'}
+  country name : Slovakia, country flags :  {png: 'https://flagcdn.com/w320/sk.png', svg: 'https://flagcdn.com/sk.svg'}
+  country name : Marshall Islands, country flags :  {png: 'https://flagcdn.com/w320/mh.png', svg: 'https://flagcdn.com/mh.svg'}
+  country name : Algeria, country flags :  {png: 'https://flagcdn.com/w320/dz.png', svg: 'https://flagcdn.com/dz.svg'}
+  country name : Jamaica, country flags :  {png: 'https://flagcdn.com/w320/jm.png', svg: 'https://flagcdn.com/jm.svg'}
+  country name : Mozambique, country flags :  {png: 'https://flagcdn.com/w320/mz.png', svg: 'https://flagcdn.com/mz.svg'}
+  country name : Spain, country flags :  {png: 'https://flagcdn.com/w320/es.png', svg: 'https://flagcdn.com/es.svg'}
+  country name : Honduras, country flags :  {png: 'https://flagcdn.com/w320/hn.png', svg: 'https://flagcdn.com/hn.svg'}
+  country name : Netherlands, country flags :  {png: 'https://flagcdn.com/w320/nl.png', svg: 'https://flagcdn.com/nl.svg'}
+  country name : South Africa, country flags :  {png: 'https://flagcdn.com/w320/za.png', svg: 'https://flagcdn.com/za.svg'}
+  country name : Azerbaijan, country flags :  {png: 'https://flagcdn.com/w320/az.png', svg: 'https://flagcdn.com/az.svg'}
+  country name : North Macedonia, country flags :  {png: 'https://flagcdn.com/w320/mk.png', svg: 'https://flagcdn.com/mk.svg'}
+  country name : Gambia, country flags :  {png: 'https://flagcdn.com/w320/gm.png', svg: 'https://flagcdn.com/gm.svg'}
+  country name : Liberia, country flags :  {png: 'https://flagcdn.com/w320/lr.png', svg: 'https://flagcdn.com/lr.svg'}
+  country name : Luxembourg, country flags :  {png: 'https://flagcdn.com/w320/lu.png', svg: 'https://flagcdn.com/lu.svg'}
+  country name : Cape Verde, country flags :  {png: 'https://flagcdn.com/w320/cv.png', svg: 'https://flagcdn.com/cv.svg'}
+  country name : Bahamas, country flags :  {png: 'https://flagcdn.com/w320/bs.png', svg: 'https://flagcdn.com/bs.svg'}
+  country name : Georgia, country flags :  {png: 'https://flagcdn.com/w320/ge.png', svg: 'https://flagcdn.com/ge.svg'}
+  country name : Kiribati, country flags :  {png: 'https://flagcdn.com/w320/ki.png', svg: 'https://flagcdn.com/ki.svg'}
+  country name : Tanzania, country flags :  {png: 'https://flagcdn.com/w320/tz.png', svg: 'https://flagcdn.com/tz.svg'}
+  country name : China, country flags :  {png: 'https://flagcdn.com/w320/cn.png', svg: 'https://flagcdn.com/cn.svg'}
+  country name : Guatemala, country flags :  {png: 'https://flagcdn.com/w320/gt.png', svg: 'https://flagcdn.com/gt.svg'}
+  country name : São Tomé and Príncipe, country flags :  {png: 'https://flagcdn.com/w320/st.png', svg: 'https://flagcdn.com/st.svg'}
+  country name : Germany, country flags :  {png: 'https://flagcdn.com/w320/de.png', svg: 'https://flagcdn.com/de.svg'}
+  country name : Sierra Leone, country flags :  {png: 'https://flagcdn.com/w320/sl.png', svg: 'https://flagcdn.com/sl.svg'}
+  country name : Chad, country flags :  {png: 'https://flagcdn.com/w320/td.png', svg: 'https://flagcdn.com/td.svg'}
+  country name : United Kingdom, country flags :  {png: 'https://flagcdn.com/w320/gb.png', svg: 'https://flagcdn.com/gb.svg'}
+  country name : Slovenia, country flags :  {png: 'https://flagcdn.com/w320/si.png', svg: 'https://flagcdn.com/si.svg'}
+  country name : Thailand, country flags :  {png: 'https://flagcdn.com/w320/th.png', svg: 'https://flagcdn.com/th.svg'}
+  country name : Indonesia, country flags :  {png: 'https://flagcdn.com/w320/id.png', svg: 'https://flagcdn.com/id.svg'}
+  country name : Northern Mariana Islands, country flags :  {png: 'https://flagcdn.com/w320/mp.png', svg: 'https://flagcdn.com/mp.svg'}
+  country name : Guam, country flags :  {png: 'https://flagcdn.com/w320/gu.png', svg: 'https://flagcdn.com/gu.svg'}
+  country name : Finland, country flags :  {png: 'https://flagcdn.com/w320/fi.png', svg: 'https://flagcdn.com/fi.svg'}
+  country name : Mayotte, country flags :  {png: 'https://flagcdn.com/w320/yt.png', svg: 'https://flagcdn.com/yt.svg'}
+  country name : Gibraltar, country flags :  {png: 'https://flagcdn.com/w320/gi.png', svg: 'https://flagcdn.com/gi.svg'}
+  country name : Turkmenistan, country flags :  {png: 'https://flagcdn.com/w320/tm.png', svg: 'https://flagcdn.com/tm.svg'}
+  country name : Kosovo, country flags :  {png: 'https://flagcdn.com/w320/xk.png', svg: 'https://flagcdn.com/xk.svg'}
+  country name : Ivory Coast, country flags :  {png: 'https://flagcdn.com/w320/ci.png', svg: 'https://flagcdn.com/ci.svg'}
+  country name : Morocco, country flags :  {png: 'https://flagcdn.com/w320/ma.png', svg: 'https://flagcdn.com/ma.svg'}
+  country name : Dominican Republic, country flags :  {png: 'https://flagcdn.com/w320/do.png', svg: 'https://flagcdn.com/do.svg'}
+  country name : Ghana, country flags :  {png: 'https://flagcdn.com/w320/gh.png', svg: 'https://flagcdn.com/gh.svg'}
+  country name : Vatican City, country flags :  {png: 'https://flagcdn.com/w320/va.png', svg: 'https://flagcdn.com/va.svg'}
+  country name : Jersey, country flags :  {png: 'https://flagcdn.com/w320/je.png', svg: 'https://flagcdn.com/je.svg'}
+  country name : Turkey, country flags :  {png: 'https://flagcdn.com/w320/tr.png', svg: 'https://flagcdn.com/tr.svg'}
+  country name : Tuvalu, country flags :  {png: 'https://flagcdn.com/w320/tv.png', svg: 'https://flagcdn.com/tv.svg'}
+  country name : Iran, country flags :  {png: 'https://flagcdn.com/w320/ir.png', svg: 'https://flagcdn.com/ir.svg'}
+  country name : Egypt, country flags :  {png: 'https://flagcdn.com/w320/eg.png', svg: 'https://flagcdn.com/eg.svg'}
+  country name : Denmark, country flags :  {png: 'https://flagcdn.com/w320/dk.png', svg: 'https://flagcdn.com/dk.svg'}
+  country name : Kenya, country flags :  {png: 'https://flagcdn.com/w320/ke.png', svg: 'https://flagcdn.com/ke.svg'}
+  country name : Bulgaria, country flags :  {png: 'https://flagcdn.com/w320/bg.png', svg: 'https://flagcdn.com/bg.svg'}
+  country name : Zimbabwe, country flags :  {png: 'https://flagcdn.com/w320/zw.png', svg: 'https://flagcdn.com/zw.svg'}
+  country name : Angola, country flags :  {png: 'https://flagcdn.com/w320/ao.png', svg: 'https://flagcdn.com/ao.svg'}
+  country name : Nigeria, country flags :  {png: 'https://flagcdn.com/w320/ng.png', svg: 'https://flagcdn.com/ng.svg'}
+  country name : Poland, country flags :  {png: 'https://flagcdn.com/w320/pl.png', svg: 'https://flagcdn.com/pl.svg'}
+  country name : Senegal, country flags :  {png: 'https://flagcdn.com/w320/sn.png', svg: 'https://flagcdn.com/sn.svg'}
+  country name : Saint Helena, Ascension and Tristan da Cunha, country flags :  {png: 'https://flagcdn.com/w320/sh.png', svg: 'https://flagcdn.com/sh.svg'}
+  country name : Lebanon, country flags :  {png: 'https://flagcdn.com/w320/lb.png', svg: 'https://flagcdn.com/lb.svg'}
+  country name : Samoa, country flags :  {png: 'https://flagcdn.com/w320/ws.png', svg: 'https://flagcdn.com/ws.svg'}
+  country name : Philippines, country flags :  {png: 'https://flagcdn.com/w320/ph.png', svg: 'https://flagcdn.com/ph.svg'}
+  country name : Guernsey, country flags :  {png: 'https://flagcdn.com/w320/gg.png', svg: 'https://flagcdn.com/gg.svg'}
+  country name : El Salvador, country flags :  {png: 'https://flagcdn.com/w320/sv.png', svg: 'https://flagcdn.com/sv.svg'}
+  country name : Kuwait, country flags :  {png: 'https://flagcdn.com/w320/kw.png', svg: 'https://flagcdn.com/kw.svg'}
+  country name : Tonga, country flags :  {png: 'https://flagcdn.com/w320/to.png', svg: 'https://flagcdn.com/to.svg'}
+  country name : Oman, country flags :  {png: 'https://flagcdn.com/w320/om.png', svg: 'https://flagcdn.com/om.svg'}
+  country name : Afghanistan, country flags :  {png: 'https://upload.wikimedia.org/wikipedia/commons/thu…the_Taliban.svg/320px-Flag_of_the_Taliban.svg.png', svg: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg'}
+  country name : Saint Kitts and Nevis, country flags :  {png: 'https://flagcdn.com/w320/kn.png', svg: 'https://flagcdn.com/kn.svg'}
+  country name : Central African Republic, country flags :  {png: 'https://flagcdn.com/w320/cf.png', svg: 'https://flagcdn.com/cf.svg'}
+  country name : Serbia, country flags :  {png: 'https://flagcdn.com/w320/rs.png', svg: 'https://flagcdn.com/rs.svg'}
+  country name : Armenia, country flags :  {png: 'https://flagcdn.com/w320/am.png', svg: 'https://flagcdn.com/am.svg'}
+  country name : Bangladesh, country flags :  {png: 'https://flagcdn.com/w320/bd.png', svg: 'https://flagcdn.com/bd.svg'}
+  country name : Laos, country flags :  {png: 'https://flagcdn.com/w320/la.png', svg: 'https://flagcdn.com/la.svg'}
+  country name : Chile, country flags :  {png: 'https://flagcdn.com/w320/cl.png', svg: 'https://flagcdn.com/cl.svg'}
+  country name : French Polynesia, country flags :  {png: 'https://flagcdn.com/w320/pf.png', svg: 'https://flagcdn.com/pf.svg'}
+  country name : Panama, country flags :  {png: 'https://flagcdn.com/w320/pa.png', svg: 'https://flagcdn.com/pa.svg'}
+  country name : United States, country flags :  {png: 'https://flagcdn.com/w320/us.png', svg: 'https://flagcdn.com/us.svg'}
+  country name : Nepal, country flags :  {png: 'https://flagcdn.com/w320/np.png', svg: 'https://flagcdn.com/np.svg'}
+  country name : Myanmar, country flags :  {png: 'https://flagcdn.com/w320/mm.png', svg: 'https://flagcdn.com/mm.svg'}
+  country name : Falkland Islands, country flags :  {png: 'https://flagcdn.com/w320/fk.png', svg: 'https://flagcdn.com/fk.svg'}
+  country name : Hungary, country flags :  {png: 'https://flagcdn.com/w320/hu.png', svg: 'https://flagcdn.com/hu.svg'}
+  country name : Palau, country flags :  {png: 'https://flagcdn.com/w320/pw.png', svg: 'https://flagcdn.com/pw.svg'}
+  country name : Equatorial Guinea, country flags :  {png: 'https://flagcdn.com/w320/gq.png', svg: 'https://flagcdn.com/gq.svg'}
+  country name : Guinea, country flags :  {png: 'https://flagcdn.com/w320/gn.png', svg: 'https://flagcdn.com/gn.svg'}
+  country name : United Arab Emirates, country flags :  {png: 'https://flagcdn.com/w320/ae.png', svg: 'https://flagcdn.com/ae.svg'}
+  country name : Turks and Caicos Islands, country flags :  {png: 'https://flagcdn.com/w320/tc.png', svg: 'https://flagcdn.com/tc.svg'}
+  country name : British Virgin Islands, country flags :  {png: 'https://flagcdn.com/w320/vg.png', svg: 'https://flagcdn.com/vg.svg'}
+  country name : Liechtenstein, country flags :  {png: 'https://flagcdn.com/w320/li.png', svg: 'https://flagcdn.com/li.svg'}
+  country name : Bosnia and Herzegovina, country flags :  {png: 'https://flagcdn.com/w320/ba.png', svg: 'https://flagcdn.com/ba.svg'}
+  country name : Malawi, country flags :  {png: 'https://flagcdn.com/w320/mw.png', svg: 'https://flagcdn.com/mw.svg'}
+  country name : Bhutan, country flags :  {png: 'https://flagcdn.com/w320/bt.png', svg: 'https://flagcdn.com/bt.svg'}
+  country name : Cameroon, country flags :  {png: 'https://flagcdn.com/w320/cm.png', svg: 'https://flagcdn.com/cm.svg'}
+  country name : Andorra, country flags :  {png: 'https://flagcdn.com/w320/ad.png', svg: 'https://flagcdn.com/ad.svg'}
+  country name : Guadeloupe, country flags :  {png: 'https://flagcdn.com/w320/gp.png', svg: 'https://flagcdn.com/gp.svg'}
+  country name : Republic of the Congo, country flags :  {png: 'https://flagcdn.com/w320/cg.png', svg: 'https://flagcdn.com/cg.svg'}
+  country name : Réunion, country flags :  {png: 'https://flagcdn.com/w320/re.png', svg: 'https://flagcdn.com/re.svg'}
+  country name : Burkina Faso, country flags :  {png: 'https://flagcdn.com/w320/bf.png', svg: 'https://flagcdn.com/bf.svg'}
+  country name : Jordan, country flags :  {png: 'https://flagcdn.com/w320/jo.png', svg: 'https://flagcdn.com/jo.svg'}
+  country name : DR Congo, country flags :  {png: 'https://flagcdn.com/w320/cd.png', svg: 'https://flagcdn.com/cd.svg'}
+  country name : Tokelau, country flags :  {png: 'https://flagcdn.com/w320/tk.png', svg: 'https://flagcdn.com/tk.svg'}
+  country name : Vietnam, country flags :  {png: 'https://flagcdn.com/w320/vn.png', svg: 'https://flagcdn.com/vn.svg'}
+  country name : Sint Maarten, country flags :  {png: 'https://flagcdn.com/w320/sx.png', svg: 'https://flagcdn.com/sx.svg'}
+  country name : Belgium, country flags :  {png: 'https://flagcdn.com/w320/be.png', svg: 'https://flagcdn.com/be.svg'}
+  country name : United States Minor Outlying Islands, country flags :  {png: 'https://flagcdn.com/w320/um.png', svg: 'https://flagcdn.com/um.svg'}
+  country name : Brazil, country flags :  {png: 'https://flagcdn.com/w320/br.png', svg: 'https://flagcdn.com/br.svg'}
+  country name : Belize, country flags :  {png: 'https://flagcdn.com/w320/bz.png', svg: 'https://flagcdn.com/bz.svg'}
+  country name : Antigua and Barbuda, country flags :  {png: 'https://flagcdn.com/w320/ag.png', svg: 'https://flagcdn.com/ag.svg'}
+  country name : Paraguay, country flags :  {png: 'https://flagcdn.com/w320/py.png', svg: 'https://flagcdn.com/py.svg'}
+  country name : Benin, country flags :  {png: 'https://flagcdn.com/w320/bj.png', svg: 'https://flagcdn.com/bj.svg'}
+  country name : Brunei, country flags :  {png: 'https://flagcdn.com/w320/bn.png', svg: 'https://flagcdn.com/bn.svg'}
+  country name : Bolivia, country flags :  {png: 'https://flagcdn.com/w320/bo.png', svg: 'https://flagcdn.com/bo.svg'}
+  country name : Djibouti, country flags :  {png: 'https://flagcdn.com/w320/dj.png', svg: 'https://flagcdn.com/dj.svg'}
+  country name : French Guiana, country flags :  {png: 'https://flagcdn.com/w320/gf.png', svg: 'https://flagcdn.com/gf.svg'}
+  country name : Canada, country flags :  {png: 'https://flagcdn.com/w320/ca.png', svg: 'https://flagcdn.com/ca.svg'}
+  country name : Saint Pierre and Miquelon, country flags :  {png: 'https://flagcdn.com/w320/pm.png', svg: 'https://flagcdn.com/pm.svg'}
+  country name : Japan, country flags :  {png: 'https://flagcdn.com/w320/jp.png', svg: 'https://flagcdn.com/jp.svg'}
+  country name : Rwanda, country flags :  {png: 'https://flagcdn.com/w320/rw.png', svg: 'https://flagcdn.com/rw.svg'}
+  country name : Saint Vincent and the Grenadines, country flags :  {png: 'https://flagcdn.com/w320/vc.png', svg: 'https://flagcdn.com/vc.svg'}
+  country name : Iceland, country flags :  {png: 'https://flagcdn.com/w320/is.png', svg: 'https://flagcdn.com/is.svg'}
+  country name : Belarus, country flags :  {png: 'https://flagcdn.com/w320/by.png', svg: 'https://flagcdn.com/by.svg'}
+  country name : Hong Kong, country flags :  {png: 'https://flagcdn.com/w320/hk.png', svg: 'https://flagcdn.com/hk.svg'}
+  country name : Lesotho, country flags :  {png: 'https://flagcdn.com/w320/ls.png', svg: 'https://flagcdn.com/ls.svg'}
+  country name : Fiji, country flags :  {png: 'https://flagcdn.com/w320/fj.png', svg: 'https://flagcdn.com/fj.svg'}
+  country name : Austria, country flags :  {png: 'https://flagcdn.com/w320/at.png', svg: 'https://flagcdn.com/at.svg'}
+  country name : Colombia, country flags :  {png: 'https://flagcdn.com/w320/co.png', svg: 'https://flagcdn.com/co.svg'}
+  country name : Gabon, country flags :  {png: 'https://flagcdn.com/w320/ga.png', svg: 'https://flagcdn.com/ga.svg'}
+  country name : Saudi Arabia, country flags :  {png: 'https://flagcdn.com/w320/sa.png', svg: 'https://flagcdn.com/sa.svg'}
+  country name : South Georgia, country flags :  {png: 'https://flagcdn.com/w320/gs.png', svg: 'https://flagcdn.com/gs.svg'}
+  country name : Ethiopia, country flags :  {png: 'https://flagcdn.com/w320/et.png', svg: 'https://flagcdn.com/et.svg'}
+  country name : Caribbean Netherlands, country flags :  {png: 'https://flagcdn.com/w320/bq.png', svg: 'https://flagcdn.com/bq.svg'}
+  country name : Monaco, country flags :  {png: 'https://flagcdn.com/w320/mc.png', svg: 'https://flagcdn.com/mc.svg'}
+  country name : North Korea, country flags :  {png: 'https://flagcdn.com/w320/kp.png', svg: 'https://flagcdn.com/kp.svg'}
+  country name : Italy, country flags :  {png: 'https://flagcdn.com/w320/it.png', svg: 'https://flagcdn.com/it.svg'}
+  country name : Namibia, country flags :  {png: 'https://flagcdn.com/w320/na.png', svg: 'https://flagcdn.com/na.svg'}
+  country name : Mongolia, country flags :  {png: 'https://flagcdn.com/w320/mn.png', svg: 'https://flagcdn.com/mn.svg'}
+  country name : Solomon Islands, country flags :  {png: 'https://flagcdn.com/w320/sb.png', svg: 'https://flagcdn.com/sb.svg'}
+  country name : Yemen, country flags :  {png: 'https://flagcdn.com/w320/ye.png', svg: 'https://flagcdn.com/ye.svg'}
+  country name : Romania, country flags :  {png: 'https://flagcdn.com/w320/ro.png', svg: 'https://flagcdn.com/ro.svg'}
+  country name : Svalbard and Jan Mayen, country flags :  {png: 'https://flagcdn.com/w320/sj.png', svg: 'https://flagcdn.com/sj.svg'}
+  country name : France, country flags :  {png: 'https://flagcdn.com/w320/fr.png', svg: 'https://flagcdn.com/fr.svg'}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+// 3. print all countries name, region, subregion, population
+
+// source code:
+
+var request = new XMLHttpRequest();
+request.open("GET","https://restcountries.com/v3.1/all");
+request.send();
+request.onload=function()
+{
+    var data =request.response
+    var result =JSON.parse(data);
+
+    for(var i=0; i<result.length; i++)
+    {
+        console.log("country name : "+result[i].name.common+", region : "+result[i].region+", subregion : "+result[i].subregion+", population : "+result[i].population);
+        
+    }
+}
+
+//output :
+    country name : Mauritania, region : Africa, subregion : Western Africa, population : 4649660
+    country name : Aruba, region : Americas, subregion : Caribbean, population : 106766
+    country name : Argentina, region : Americas, subregion : South America, population : 45376763
+    country name : Sweden, region : Europe, subregion : Northern Europe, population : 10353442
+    country name : Maldives, region : Asia, subregion : Southern Asia, population : 540542
+    country name : Mexico, region : Americas, subregion : North America, population : 128932753
+    country name : New Zealand, region : Oceania, subregion : Australia and New Zealand, population : 5084300
+    country name : Ecuador, region : Americas, subregion : South America, population : 17643060
+    country name : Wallis and Futuna, region : Oceania, subregion : Polynesia, population : 11750
+    country name : Åland Islands, region : Europe, subregion : Northern Europe, population : 29458
+    country name : Montenegro, region : Europe, subregion : Southeast Europe, population : 621718
+    country name : Pakistan, region : Asia, subregion : Southern Asia, population : 220892331
+    country name : Pitcairn Islands, region : Oceania, subregion : Polynesia, population : 56
+    country name : Zambia, region : Africa, subregion : Eastern Africa, population : 18383956
+    country name : Seychelles, region : Africa, subregion : Eastern Africa, population : 98462
+    country name : Malaysia, region : Asia, subregion : South-Eastern Asia, population : 32365998
+    country name : Norway, region : Europe, subregion : Northern Europe, population : 5379475
+    country name : Uzbekistan, region : Asia, subregion : Central Asia, population : 34232050
+    country name : Vanuatu, region : Oceania, subregion : Melanesia, population : 307150
+    country name : French Southern and Antarctic Lands, region : Antarctic, subregion : undefined, population : 400
+    country name : Christmas Island, region : Oceania, subregion : Australia and New Zealand, population : 2072
+    country name : Singapore, region : Asia, subregion : South-Eastern Asia, population : 5685807
+    country name : Suriname, region : Americas, subregion : South America, population : 586634
+    country name : Western Sahara, region : Africa, subregion : Northern Africa, population : 510713
+    country name : Saint Martin, region : Americas, subregion : Caribbean, population : 38659
+    country name : Costa Rica, region : Americas, subregion : Central America, population : 5094114
+    country name : Heard Island and McDonald Islands, region : Antarctic, subregion : undefined, population : 0
+    country name : Ireland, region : Europe, subregion : Northern Europe, population : 4994724
+    country name : Antarctica, region : Antarctic, subregion : undefined, population : 1000
+    country name : Australia, region : Oceania, subregion : Australia and New Zealand, population : 25687041
+    country name : Libya, region : Africa, subregion : Northern Africa, population : 6871287
+    country name : Qatar, region : Asia, subregion : Western Asia, population : 2881060
+    country name : Greenland, region : Americas, subregion : North America, population : 56367
+    country name : Mauritius, region : Africa, subregion : Eastern Africa, population : 1265740
+    country name : Kazakhstan, region : Asia, subregion : Central Asia, population : 18754440
+    country name : British Indian Ocean Territory, region : Africa, subregion : Eastern Africa, population : 3000
+    country name : Albania, region : Europe, subregion : Southeast Europe, population : 2837743
+    country name : Bahrain, region : Asia, subregion : Western Asia, population : 1701583
+    country name : Papua New Guinea, region : Oceania, subregion : Melanesia, population : 8947027
+    country name : Burundi, region : Africa, subregion : Eastern Africa, population : 11890781
+    country name : India, region : Asia, subregion : Southern Asia, population : 1380004385
+    country name : Uruguay, region : Americas, subregion : South America, population : 3473727
+    country name : Saint Lucia, region : Americas, subregion : Caribbean, population : 183629
+    country name : Barbados, region : Americas, subregion : Caribbean, population : 287371
+    country name : New Caledonia, region : Oceania, subregion : Melanesia, population : 271960
+    country name : Latvia, region : Europe, subregion : Northern Europe, population : 1901548
+    country name : Estonia, region : Europe, subregion : Northern Europe, population : 1331057
+    country name : Niue, region : Oceania, subregion : Polynesia, population : 1470
+    country name : Saint Barthélemy, region : Americas, subregion : Caribbean, population : 4255
+    country name : Puerto Rico, region : Americas, subregion : Caribbean, population : 3194034
+    country name : Grenada, region : Americas, subregion : Caribbean, population : 112519
+    country name : Macau, region : Asia, subregion : Eastern Asia, population : 649342
+    country name : Cyprus, region : Europe, subregion : Southern Europe, population : 1207361
+    country name : Isle of Man, region : Europe, subregion : Northern Europe, population : 85032
+    country name : Greece, region : Europe, subregion : Southern Europe, population : 10715549
+    country name : Syria, region : Asia, subregion : Western Asia, population : 17500657
+    country name : Lithuania, region : Europe, subregion : Northern Europe, population : 2794700
+    country name : Curaçao, region : Americas, subregion : Caribbean, population : 155014
+    country name : Dominica, region : Americas, subregion : Caribbean, population : 71991
+    country name : Niger, region : Africa, subregion : Western Africa, population : 24206636
+    country name : Kyrgyzstan, region : Asia, subregion : Central Asia, population : 6591600
+    country name : Trinidad and Tobago, region : Americas, subregion : Caribbean, population : 1399491
+    country name : Togo, region : Africa, subregion : Western Africa, population : 8278737
+    country name : Palestine, region : Asia, subregion : Western Asia, population : 4803269
+    country name : Madagascar, region : Africa, subregion : Eastern Africa, population : 27691019
+    country name : Croatia, region : Europe, subregion : Southeast Europe, population : 4047200
+    country name : Faroe Islands, region : Europe, subregion : Northern Europe, population : 48865
+    country name : Haiti, region : Americas, subregion : Caribbean, population : 11402533
+    country name : Montserrat, region : Americas, subregion : Caribbean, population : 4922
+    country name : Cook Islands, region : Oceania, subregion : Polynesia, population : 18100
+    country name : Timor-Leste, region : Asia, subregion : South-Eastern Asia, population : 1318442
+    country name : Martinique, region : Americas, subregion : Caribbean, population : 378243
+    country name : Cuba, region : Americas, subregion : Caribbean, population : 11326616
+    country name : Taiwan, region : Asia, subregion : Eastern Asia, population : 23503349
+    country name : Eswatini, region : Africa, subregion : Southern Africa, population : 1160164
+    country name : Ukraine, region : Europe, subregion : Eastern Europe, population : 44134693
+    country name : Bermuda, region : Americas, subregion : North America, population : 63903
+    country name : South Korea, region : Asia, subregion : Eastern Asia, population : 51780579
+    country name : Peru, region : Americas, subregion : South America, population : 32971846
+    country name : Iraq, region : Asia, subregion : Western Asia, population : 40222503
+    country name : Moldova, region : Europe, subregion : Eastern Europe, population : 2617820
+    country name : San Marino, region : Europe, subregion : Southern Europe, population : 33938
+    country name : Venezuela, region : Americas, subregion : South America, population : 28435943
+    country name : Guyana, region : Americas, subregion : South America, population : 786559
+    country name : Cayman Islands, region : Americas, subregion : Caribbean, population : 65720
+    country name : Cambodia, region : Asia, subregion : South-Eastern Asia, population : 16718971
+    country name : Cocos (Keeling) Islands, region : Oceania, subregion : Australia and New Zealand, population : 544
+    country name : Malta, region : Europe, subregion : Southern Europe, population : 525285
+    country name : Sri Lanka, region : Asia, subregion : Southern Asia, population : 21919000
+    country name : Israel, region : Asia, subregion : Western Asia, population : 9216900
+    country name : Sudan, region : Africa, subregion : Northern Africa, population : 43849269
+    country name : United States Virgin Islands, region : Americas, subregion : Caribbean, population : 106290
+    country name : Eritrea, region : Africa, subregion : Eastern Africa, population : 5352000
+    country name : Mali, region : Africa, subregion : Western Africa, population : 20250834
+    country name : Somalia, region : Africa, subregion : Eastern Africa, population : 15893219
+    country name : Norfolk Island, region : Oceania, subregion : Australia and New Zealand, population : 2302
+    country name : Comoros, region : Africa, subregion : Eastern Africa, population : 869595
+    country name : Nicaragua, region : Americas, subregion : Central America, population : 6624554
+    country name : Russia, region : Europe, subregion : Eastern Europe, population : 144104080
+    country name : Uganda, region : Africa, subregion : Eastern Africa, population : 45741000
+    country name : Nauru, region : Oceania, subregion : Micronesia, population : 10834
+    country name : Switzerland, region : Europe, subregion : Western Europe, population : 8654622
+    country name : Portugal, region : Europe, subregion : Southern Europe, population : 10305564
+    country name : Tajikistan, region : Asia, subregion : Central Asia, population : 9537642
+    country name : South Sudan, region : Africa, subregion : Middle Africa, population : 11193729
+    country name : Bouvet Island, region : Antarctic, subregion : undefined, population : 0
+    country name : Micronesia, region : Oceania, subregion : Micronesia, population : 115021
+    country name : American Samoa, region : Oceania, subregion : Polynesia, population : 55197
+    country name : Czechia, region : Europe, subregion : Central Europe, population : 10698896
+    country name : Botswana, region : Africa, subregion : Southern Africa, population : 2351625
+    country name : Tunisia, region : Africa, subregion : Northern Africa, population : 11818618
+    country name : Anguilla, region : Americas, subregion : Caribbean, population : 13452
+    country name : Guinea-Bissau, region : Africa, subregion : Western Africa, population : 1967998
+    country name : Slovakia, region : Europe, subregion : Central Europe, population : 5458827
+    country name : Marshall Islands, region : Oceania, subregion : Micronesia, population : 59194
+    country name : Algeria, region : Africa, subregion : Northern Africa, population : 44700000
+    country name : Jamaica, region : Americas, subregion : Caribbean, population : 2961161
+    country name : Mozambique, region : Africa, subregion : Eastern Africa, population : 31255435
+    country name : Spain, region : Europe, subregion : Southern Europe, population : 47351567
+    country name : Honduras, region : Americas, subregion : Central America, population : 9904608
+    country name : Netherlands, region : Europe, subregion : Western Europe, population : 16655799
+    country name : South Africa, region : Africa, subregion : Southern Africa, population : 59308690
+    country name : Azerbaijan, region : Asia, subregion : Western Asia, population : 10110116
+    country name : North Macedonia, region : Europe, subregion : Southeast Europe, population : 2077132
+    country name : Gambia, region : Africa, subregion : Western Africa, population : 2416664
+    country name : Liberia, region : Africa, subregion : Western Africa, population : 5057677
+    country name : Luxembourg, region : Europe, subregion : Western Europe, population : 632275
+    country name : Cape Verde, region : Africa, subregion : Western Africa, population : 555988
+    country name : Bahamas, region : Americas, subregion : Caribbean, population : 393248
+    country name : Georgia, region : Asia, subregion : Western Asia, population : 3714000
+    country name : Kiribati, region : Oceania, subregion : Micronesia, population : 119446
+    country name : Tanzania, region : Africa, subregion : Eastern Africa, population : 59734213
+    country name : China, region : Asia, subregion : Eastern Asia, population : 1402112000
+    country name : Guatemala, region : Americas, subregion : Central America, population : 16858333
+    country name : São Tomé and Príncipe, region : Africa, subregion : Middle Africa, population : 219161
+    country name : Germany, region : Europe, subregion : Western Europe, population : 83240525
+    country name : Sierra Leone, region : Africa, subregion : Western Africa, population : 7976985
+    country name : Chad, region : Africa, subregion : Middle Africa, population : 16425859
+    country name : United Kingdom, region : Europe, subregion : Northern Europe, population : 67215293
+    country name : Slovenia, region : Europe, subregion : Central Europe, population : 2100126
+    country name : Thailand, region : Asia, subregion : South-Eastern Asia, population : 69799978
+    country name : Indonesia, region : Asia, subregion : South-Eastern Asia, population : 273523621
+    country name : Northern Mariana Islands, region : Oceania, subregion : Micronesia, population : 57557
+    country name : Guam, region : Oceania, subregion : Micronesia, population : 168783
+    country name : Finland, region : Europe, subregion : Northern Europe, population : 5530719
+    country name : Mayotte, region : Africa, subregion : Eastern Africa, population : 226915
+    country name : Gibraltar, region : Europe, subregion : Southern Europe, population : 33691
+    country name : Turkmenistan, region : Asia, subregion : Central Asia, population : 6031187
+    country name : Kosovo, region : Europe, subregion : Southeast Europe, population : 1775378
+    country name : Ivory Coast, region : Africa, subregion : Western Africa, population : 26378275
+    country name : Morocco, region : Africa, subregion : Northern Africa, population : 36910558
+    country name : Dominican Republic, region : Americas, subregion : Caribbean, population : 10847904
+    country name : Ghana, region : Africa, subregion : Western Africa, population : 31072945
+    country name : Vatican City, region : Europe, subregion : Southern Europe, population : 451
+    country name : Jersey, region : Europe, subregion : Northern Europe, population : 100800
+    country name : Turkey, region : Asia, subregion : Western Asia, population : 84339067
+    country name : Tuvalu, region : Oceania, subregion : Polynesia, population : 11792
+    country name : Iran, region : Asia, subregion : Southern Asia, population : 83992953
+    country name : Egypt, region : Africa, subregion : Northern Africa, population : 102334403
+    country name : Denmark, region : Europe, subregion : Northern Europe, population : 5831404
+    country name : Kenya, region : Africa, subregion : Eastern Africa, population : 53771300
+    country name : Bulgaria, region : Europe, subregion : Southeast Europe, population : 6927288
+    country name : Zimbabwe, region : Africa, subregion : Southern Africa, population : 14862927
+    country name : Angola, region : Africa, subregion : Middle Africa, population : 32866268
+    country name : Nigeria, region : Africa, subregion : Western Africa, population : 206139587
+    country name : Poland, region : Europe, subregion : Central Europe, population : 37950802
+    country name : Senegal, region : Africa, subregion : Western Africa, population : 16743930
+    country name : Saint Helena, Ascension and Tristan da Cunha, region : Africa, subregion : Western Africa, population : 53192
+    country name : Lebanon, region : Asia, subregion : Western Asia, population : 6825442
+    country name : Samoa, region : Oceania, subregion : Polynesia, population : 198410
+    country name : Philippines, region : Asia, subregion : South-Eastern Asia, population : 109581085
+    country name : Guernsey, region : Europe, subregion : Northern Europe, population : 62999
+    country name : El Salvador, region : Americas, subregion : Central America, population : 6486201
+    country name : Kuwait, region : Asia, subregion : Western Asia, population : 4270563
+    country name : Tonga, region : Oceania, subregion : Polynesia, population : 105697
+    country name : Oman, region : Asia, subregion : Western Asia, population : 5106622
+    country name : Afghanistan, region : Asia, subregion : Southern Asia, population : 40218234
+    country name : Saint Kitts and Nevis, region : Americas, subregion : Caribbean, population : 53192
+    country name : Central African Republic, region : Africa, subregion : Middle Africa, population : 4829764
+    country name : Serbia, region : Europe, subregion : Southeast Europe, population : 6908224
+    country name : Armenia, region : Asia, subregion : Western Asia, population : 2963234
+    country name : Bangladesh, region : Asia, subregion : Southern Asia, population : 164689383
+    country name : Laos, region : Asia, subregion : South-Eastern Asia, population : 7275556
+    country name : Chile, region : Americas, subregion : South America, population : 19116209
+    country name : French Polynesia, region : Oceania, subregion : Polynesia, population : 280904
+    country name : Panama, region : Americas, subregion : Central America, population : 4314768
+    country name : United States, region : Americas, subregion : North America, population : 329484123
+    country name : Nepal, region : Asia, subregion : Southern Asia, population : 29136808
+    country name : Myanmar, region : Asia, subregion : South-Eastern Asia, population : 54409794
+    country name : Falkland Islands, region : Americas, subregion : South America, population : 2563
+    country name : Hungary, region : Europe, subregion : Central Europe, population : 9749763
+    country name : Palau, region : Oceania, subregion : Micronesia, population : 18092
+    country name : Equatorial Guinea, region : Africa, subregion : Middle Africa, population : 1402985
+    country name : Guinea, region : Africa, subregion : Western Africa, population : 13132792
+    country name : United Arab Emirates, region : Asia, subregion : Western Asia, population : 9890400
+    country name : Turks and Caicos Islands, region : Americas, subregion : Caribbean, population : 38718
+    country name : British Virgin Islands, region : Americas, subregion : Caribbean, population : 30237
+    country name : Liechtenstein, region : Europe, subregion : Western Europe, population : 38137
+    country name : Bosnia and Herzegovina, region : Europe, subregion : Southeast Europe, population : 3280815
+    country name : Malawi, region : Africa, subregion : Eastern Africa, population : 19129955
+    country name : Bhutan, region : Asia, subregion : Southern Asia, population : 771612
+    country name : Cameroon, region : Africa, subregion : Middle Africa, population : 26545864
+    country name : Andorra, region : Europe, subregion : Southern Europe, population : 77265
+    country name : Guadeloupe, region : Americas, subregion : Caribbean, population : 400132
+    country name : Republic of the Congo, region : Africa, subregion : Middle Africa, population : 5657000
+    country name : Réunion, region : Africa, subregion : Eastern Africa, population : 840974
+    country name : Burkina Faso, region : Africa, subregion : Western Africa, population : 20903278
+    country name : Jordan, region : Asia, subregion : Western Asia, population : 10203140
+    country name : DR Congo, region : Africa, subregion : Middle Africa, population : 108407721
+    country name : Tokelau, region : Oceania, subregion : Polynesia, population : 1411
+    country name : Vietnam, region : Asia, subregion : South-Eastern Asia, population : 97338583
+    country name : Sint Maarten, region : Americas, subregion : Caribbean, population : 40812
+    country name : Belgium, region : Europe, subregion : Western Europe, population : 11555997
+    country name : United States Minor Outlying Islands, region : Americas, subregion : North America, population : 300
+    country name : Brazil, region : Americas, subregion : South America, population : 212559409
+    country name : Belize, region : Americas, subregion : Central America, population : 397621
+    country name : Antigua and Barbuda, region : Americas, subregion : Caribbean, population : 97928
+    country name : Paraguay, region : Americas, subregion : South America, population : 7132530
+    country name : Benin, region : Africa, subregion : Western Africa, population : 12123198
+    country name : Brunei, region : Asia, subregion : South-Eastern Asia, population : 437483
+    country name : Bolivia, region : Americas, subregion : South America, population : 11673029
+    country name : Djibouti, region : Africa, subregion : Eastern Africa, population : 988002
+    country name : French Guiana, region : Americas, subregion : South America, population : 254541
+    country name : Canada, region : Americas, subregion : North America, population : 38005238
+    country name : Saint Pierre and Miquelon, region : Americas, subregion : North America, population : 6069
+    country name : Japan, region : Asia, subregion : Eastern Asia, population : 125836021
+    country name : Rwanda, region : Africa, subregion : Eastern Africa, population : 12952209
+    country name : Saint Vincent and the Grenadines, region : Americas, subregion : Caribbean, population : 110947
+    country name : Iceland, region : Europe, subregion : Northern Europe, population : 366425
+    country name : Belarus, region : Europe, subregion : Eastern Europe, population : 9398861
+    country name : Hong Kong, region : Asia, subregion : Eastern Asia, population : 7500700
+    country name : Lesotho, region : Africa, subregion : Southern Africa, population : 2142252
+    country name : Fiji, region : Oceania, subregion : Melanesia, population : 896444
+    country name : Austria, region : Europe, subregion : Central Europe, population : 8917205
+    country name : Colombia, region : Americas, subregion : South America, population : 50882884
+    country name : Gabon, region : Africa, subregion : Middle Africa, population : 2225728
+    country name : Saudi Arabia, region : Asia, subregion : Western Asia, population : 34813867
+    country name : South Georgia, region : Antarctic, subregion : undefined, population : 30
+    country name : Ethiopia, region : Africa, subregion : Eastern Africa, population : 114963583
+    country name : Caribbean Netherlands, region : Americas, subregion : Caribbean, population : 25987
+    country name : Monaco, region : Europe, subregion : Western Europe, population : 39244
+    country name : North Korea, region : Asia, subregion : Eastern Asia, population : 25778815
+    country name : Italy, region : Europe, subregion : Southern Europe, population : 59554023
+    country name : Namibia, region : Africa, subregion : Southern Africa, population : 2540916
+    country name : Mongolia, region : Asia, subregion : Eastern Asia, population : 3278292
+    country name : Solomon Islands, region : Oceania, subregion : Melanesia, population : 686878
+    country name : Yemen, region : Asia, subregion : Western Asia, population : 29825968
+    country name : Romania, region : Europe, subregion : Southeast Europe, population : 19286123
+    country name : Svalbard and Jan Mayen, region : Europe, subregion : Northern Europe, population : 2562
+    country name : France, region : Europe, subregion : Western Europe, population : 67391582
